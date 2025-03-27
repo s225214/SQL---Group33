@@ -215,7 +215,8 @@ VALUES
 ('John Doe', 'johndoe@example.com', '123-456-7890', '1990-05-15', '123 Elm Street'),
 ('Jane Smith', 'janesmith@example.com', '987-654-3210', '1985-10-20', '456 Oak Avenue'),
 ('Michael Brown', 'michaelb@example.com', '555-123-6789', '2000-07-30', '789 Pine Road'),
-('Arturo Cortes', 'artculos@gmail.com','123456','2004-03-19','19 Malaga');
+('Arturo Cortes', 'artculos@gmail.com','123456','2004-03-19','19 Malaga'),
+('Carlos Fernandez', 'charlos@gmail.com', '123456','2000-01-01','20 Malaga');
 
 INSERT INTO Borrows (client_id, book_id, due_date, return_date)
 VALUES 
