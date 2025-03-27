@@ -61,11 +61,9 @@ CREATE TABLE Book (
     book_title VARCHAR (100) NOT NULL,
     book_author INT,
     publication_date DATE,
-    topic VARCHAR(100),
     section VARCHAR(100),
     stock INT,
     FOREIGN KEY (book_author) REFERENCES Author(author_id) ON DELETE SET NULL,
-    FOREIGN KEY (topic) REFERENCES Topic(topic_name) ON DELETE SET NULL,
     FOREIGN KEY (section) REFERENCES Section(section_name) ON DELETE SET NULL
 );
 CREATE TABLE Borrows ( 
@@ -93,6 +91,14 @@ CREATE TABLE Discusses (
     PRIMARY KEY (book_id, club_id),
     FOREIGN KEY (book_id) REFERENCES Book(book_id),
     FOREIGN KEY (club_id) REFERENCES ReadingClub(club_id) ON DELETE CASCADE    
+);
+
+CREATE TABLE HasTopic (
+    topic_name VARCHAR (50),
+    book_id INT,
+    PRIMARY KEY (topic_name, book_id),
+    FOREIGN KEY (book_id) REFERENCES Book(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (topic_name) REFERENCES Topic(topic_name) ON DELETE CASCADE  
 );
 
 
@@ -151,30 +157,50 @@ VALUES
 ('Newspapers',2);
 
 
-INSERT INTO Book (book_title, book_author, publication_date, topic, section, stock)
+INSERT INTO Book (book_title, book_author, publication_date, section, stock)
 VALUES 
-('Pride and Prejudice', 2, '1813-01-28', 'Romance', 'Adults', 5),
-('1984', 3, '1949-06-08', 'Dystopian', 'Adults', 7),
-('To Kill a Mockingbird', 4, '1960-07-11', 'Drama', 'Adults', 8),
-('Moby-Dick', 5, '1851-10-18', 'Adventure', 'Teens', 4),
-('The Great Gatsby', 6, '1925-04-10', 'Classic', 'Adults', 6),
-('War and Peace', 7, '1869-01-01', 'Historical', 'Adults', 3),
-('The Catcher in the Rye', 8, '1951-07-16', 'Coming-of-Age', 'Adults', 9),
-('Frankenstein', 9, '1818-01-01', 'Horror', 'Adults', 5),
-('The alchemist',18,'1988-02-14','Adventure','Adults',1),
-('The Hunger Games', 10, '2008-09-14', 'Dystopian', 'Teens', 10),
-('Harry Potter and the Sorcerer\'s Stone', 11, '1997-06-26', 'Fantasy', 'Teens', 12),
-('Percy Jackson & The Olympians: The Lightning Thief', 12, '2005-06-28', 'Fantasy', 'Teens', 9),
-('Charlotte\'s Web', 13, '1952-10-15', 'Children', 'Kids', 15),
-('The Very Hungry Caterpillar', 14, '1969-06-03', 'Children', 'Kids', 20),
-('Where the Wild Things Are', 15, '1963-04-09', 'Children', 'Kids', 18),
-('Don Quixote', 16, '1605-01-16', 'Classic', 'Antiques', 3),
-('The Iliad', 17, '762-01-01', 'Epic', 'Antiques', 2),
-('The Divine Comedy', 18, '1320-01-01', 'Classic', 'Antiques', 4),
-('El Lazarillo de Tormes', 1, '1249-03-04', 'Picaresque', 'Antiques', 1);
+('Pride and Prejudice', 2, '1813-01-28', 'Adults', 5),
+('1984', 3, '1949-06-08', 'Adults', 7),
+('To Kill a Mockingbird', 4, '1960-07-11', 'Adults', 8),
+('Moby-Dick', 5, '1851-10-18', 'Teens', 4),
+('The Great Gatsby', 6, '1925-04-10', 'Adults', 6),
+('War and Peace', 7, '1869-01-01', 'Adults', 3),
+('The Catcher in the Rye', 8, '1951-07-16', 'Adults', 9),
+('Frankenstein', 9, '1818-01-01', 'Adults', 5),
+('The Alchemist', 18, '1988-02-14', 'Adults', 1),
+('The Hunger Games', 10, '2008-09-14', 'Teens', 10),
+('Harry Potter and the Sorcerer\'s Stone', 11, '1997-06-26', 'Teens', 12),
+('Percy Jackson & The Olympians: The Lightning Thief', 12, '2005-06-28', 'Teens', 9),
+('Charlotte\'s Web', 13, '1952-10-15', 'Kids', 15),
+('The Very Hungry Caterpillar', 14, '1969-06-03', 'Kids', 20),
+('Where the Wild Things Are', 15, '1963-04-09', 'Kids', 18),
+('Don Quixote', 16, '1605-01-16', 'Antiques', 3),
+('The Iliad', 17, '762-01-01', 'Antiques', 2),
+('The Divine Comedy', 18, '1320-01-01', 'Antiques', 4),
+('El Lazarillo de Tormes', 1, '1249-03-04', 'Antiques', 1);
 
-
-
+INSERT INTO HasTopic (topic_name, book_id)
+VALUES 
+('Romance', 1),
+('Drama',1),
+('Dystopian', 2),
+('Drama', 3),
+('Adventure', 4),
+('Classic', 5),
+('Historical', 6),
+('Coming-of-Age', 7),
+('Horror', 8),
+('Adventure',9),
+('Dystopian',10),
+('Fantasy', 11),
+('Fantasy', 12),
+('Children', 13),
+('Children',14),
+('Children', 15),
+('Classic', 16),
+('Epic', 17),
+('Classic',18),
+('Picaresque', 19);
 
 INSERT INTO Employee (emp_name, salary)
 VALUES 
