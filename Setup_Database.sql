@@ -223,7 +223,8 @@ VALUES
 (1, 1, '2025-04-01', NULL),
 (2, 3, '2025-03-28', '2025-03-18'),
 (3, 5, '2025-04-10', NULL),
-(4,19, '2004-03-19', NULL)
+(4,19, '2004-03-19', NULL),
+(5, 2, '2002-04-05', '2002-04-12');
 ;
 
 INSERT INTO ReadingClub (club_name, day_happening, club_responsible, club_topic)
