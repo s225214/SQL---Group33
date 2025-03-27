@@ -1,0 +1,3 @@
+DELETE FROM Borrows
+WHERE return_date IS NOT NULL
+AND due_date < CURDATE() - INTERVAL 10 YEAR;

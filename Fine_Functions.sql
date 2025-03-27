@@ -14,8 +14,8 @@ DROP TABLE IF EXISTS Employee;
 DROP TABLE IF EXISTS Section;
 
 CREATE TABLE Section (
-     section_name VARCHAR(50) PRIMARY KEY,
-     section_location INT
+     sec_name VARCHAR(50) PRIMARY KEY,
+     sec_location INT
 );
 
 CREATE TABLE Employee (
@@ -188,15 +188,16 @@ CREATE TABLE Clients (
  ('John Doe', 'johndoe@example.com', '123-456-7890', '1990-05-15', '123 Elm Street'),
  ('Jane Smith', 'janesmith@example.com', '987-654-3210', '1985-10-20', '456 Oak Avenue'),
  ('Michael Brown', 'michaelb@example.com', '555-123-6789', '2000-07-30', '789 Pine Road'),
- ('Arturo Cortes', 'artculos@gmail.com','123456','2004-03-19','19 Malaga');
+ ('Arturo Cortes', 'artculos@gmail.com','123456','2004-03-19','19 Malaga'),
+ ('Carlos Fernandez', 'charlos@gmail.com', '123456','2000-01-01','20 Malaga');
  
  INSERT INTO Borrows (client_id, book_id, due_date, return_date)
  VALUES 
  (1, 1, '2025-04-01', NULL),
  (2, 3, '2025-03-28', '2025-03-18'),
  (3, 5, '2025-04-10', NULL),
- (4,19, '2004-03-19', NULL)
- ;
+ (4,19, '2004-03-19', NULL),
+ (5, 2, '2002-04-05', '2002-04-12');
  
  INSERT INTO ReadingClub (club_name, day_happening, club_responsible, club_topic)
  VALUES 
