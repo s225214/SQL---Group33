@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS LibrarySystem;
 CREATE DATABASE LibrarySystem;
 USE LibrarySystem;
 
