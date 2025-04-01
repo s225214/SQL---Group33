@@ -20,6 +20,22 @@ UNION
 
 -- FUNCTION
 
+DELIMITER //
+
+CREATE FUNCTION TotalBooksBorrowed()
+RETURNS INT DETERMINISTIC
+BEGIN
+    DECLARE total_books INT;
+    SELECT COUNT(*) INTO total_books
+    FROM Borrows;
+    RETURN total_books;
+END//
+
+DELIMITER ;
+
+
+SELECT TotalBooksBorrowed();
+
 -- PROCEDURE
 DROP PROCEDURE IF EXISTS register_borrow;
 DROP TRIGGER IF EXISTS update_stock_on_return;
