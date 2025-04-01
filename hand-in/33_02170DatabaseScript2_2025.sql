@@ -1,5 +1,6 @@
 DROP PROCEDURE IF EXISTS register_borrow;
 DROP TRIGGER IF EXISTS update_stock_on_return;
+DROP FUNCTION IF EXISTS TotalBooksBorrowed;
 
 -- QUERIES
 
