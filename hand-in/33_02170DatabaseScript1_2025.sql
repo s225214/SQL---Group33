@@ -34,12 +34,11 @@ CREATE TABLE ReadingClub (
 	club_id INT AUTO_INCREMENT PRIMARY KEY ,
     club_name VARCHAR(50),
     day_happening DATE,
-    club_responsible INT,
+    club_responsible INT NOT NULL,
     club_topic VARCHAR(50),
-    FOREIGN KEY (club_responsible) REFERENCES Employee(emp_id) ON DELETE SET NULL,
+    FOREIGN KEY (club_responsible) REFERENCES Employee(emp_id) ON DELETE CASCADE,
     FOREIGN KEY (club_topic) REFERENCES Topic(topic_name) ON DELETE SET NULL
 );
-
 
 CREATE TABLE Author (
     author_id INT AUTO_INCREMENT PRIMARY KEY ,
@@ -60,12 +59,12 @@ CREATE TABLE Clients (
 CREATE TABLE Book (
 	book_id INT AUTO_INCREMENT PRIMARY KEY,
     book_title VARCHAR (100) NOT NULL,
-    book_author INT,
+    book_author INT NOT NULL,
     publication_date DATE,
-    section VARCHAR(100),
+    section VARCHAR(100) NOT NULL,
     stock INT,
-    FOREIGN KEY (book_author) REFERENCES Author(author_id) ON DELETE SET NULL,
-    FOREIGN KEY (section) REFERENCES Section(section_name) ON DELETE SET NULL
+    FOREIGN KEY (book_author) REFERENCES Author(author_id) ON DELETE CASCADE,
+    FOREIGN KEY (section) REFERENCES Section(section_name) ON DELETE CASCADE
 );
 CREATE TABLE Borrows ( 
 	client_id INT,

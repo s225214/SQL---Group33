@@ -107,9 +107,11 @@ SELECT * FROM Borrows;
 SELECT book_id, book_title, section, stock FROM Book WHERE section = 'Antiques';
 
 -- DELETE 
+SET SQL_SAFE_UPDATES = 0;
 DELETE FROM Borrows
 WHERE return_date IS NOT NULL
 AND due_date < CURDATE() - INTERVAL 10 YEAR;
+
 
 -- UPDATE 
 UPDATE Book AS b
